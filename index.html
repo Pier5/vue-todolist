@@ -12,14 +12,13 @@
 <body>
     <div id="app">
         <div class="add-todo">
-            <input type="text" name="todo-name" id="todo-name" placeholder="Nuovo Todo">
-            <button>Aggiungi</button>
+            <input v-model="newTodo" type="text" name="todo-name" id="todo-name" placeholder="Nuovo Todo">
+            <button @click="addTodo">Aggiungi</button>
         </div>
 
         <ul class="todo-list">
             <li v-for="(element, index) in arrTodo" class="todo-item">
-                <div v-if="element.done == false" class="todo-text">{{ element.text }}</div>
-                <div v-else="element.done == true" :class="classList" class="todo-text">{{ element.text }}</div>
+                <div :class="element.done == true ? 'todo-text text-done' : 'todo-text'">{{ element.text }}</div>
                 <button @click="deleteTodo(index)" class="btn-delete">X</button>
             </li>
         </ul>
