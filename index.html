@@ -18,8 +18,9 @@
 
         <ul class="todo-list">
             <li v-for="(element, index) in arrTodo" class="todo-item">
-                <div class="todo-text">{{ element.text }}</div>
-                <button class="btn-delete">X</button>
+                <div v-if="element.done == false" class="todo-text">{{ element.text }}</div>
+                <div v-else="element.done == true" :class="classList" class="todo-text">{{ element.text }}</div>
+                <button @click="deleteTodo(index)" class="btn-delete">X</button>
             </li>
         </ul>
     </div>
